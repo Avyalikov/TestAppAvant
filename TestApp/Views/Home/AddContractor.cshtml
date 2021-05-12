@@ -1,0 +1,55 @@
+﻿@model TestApp.Models.Contractor
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "Add contractor";
+}
+
+<h1>Добавить нового контрагента</h1>
+
+<h4>Контрагент</h4>
+<hr />
+<div class="row">
+    @using (Html.BeginForm("AddContractor", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            <label class="col-md-2 control-label">Наименование контрагента</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { placeholder = "Наименование" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Тип контрагента</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Type, new List<SelectListItem> {
+                       new SelectListItem { Value = "0" , Text = "ИП" },
+                       new SelectListItem { Value = "1" , Text = "Юр. лицо"}}, "Тип контрагента")
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">ИНН</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.INN, new { placeholder = "ИНН" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">КПП</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.KPP, new { placeholder = "КПП" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="addContractor" value="Добавить контрагента" />
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <button>
+        <a href="/Home/Index">Вернуться к списку</a>
+    </button>
+</div>
+

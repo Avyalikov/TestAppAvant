@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TestApp.Models.Contractor>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список контрагентов</h1>
+
+<button>
+    <a href="/Home/AddContractor">Добавить контрагента</a>
+</button>
+<button>
+    <a href="/swagger">Swagger</a>
+</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Наименование контрагента
+            </th>
+            <th>
+                Полное наименование из ЕГРЮЛ
+            </th>
+            <th>
+                Тип контрагента
+            </th>
+            <th>
+                ИНН
+            </th>
+            <th>
+                КПП
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.INN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KPP)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
